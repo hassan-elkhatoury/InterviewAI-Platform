@@ -1,6 +1,6 @@
-# ASTRA migration implementation
+# Architecture Migration Implementation
 
-The five steps in `ASTRA_MIGRATION_GUIDE.md` are implemented in order:
+The architectural decoupling was implemented in five structured steps:
 
 1. **Parent module:** root Maven reactor, Java 17 release target, Spring Boot 3.5 dependency management, separate backend/frontend modules.
 2. **Backend scaffold:** standalone executable Spring Boot API with Web, JPA, Security, Validation, MySQL, Flyway and OpenAPI.
@@ -43,6 +43,6 @@ Live AI-provider calls require your own `AI_API_KEY`; tests use local HTTP fixtu
 
 The original migration was verified locally on Java 17.0.21 with 26 passing tests (20 backend, 6 frontend), including actual JavaFX loading of the login and registration screens. The 13 API integration tests also passed against an isolated MySQL 8.0.45 database with V1/V2 Flyway migrations and Hibernate schema validation. The existing application database was not modified.
 
-After implementing `ASTRA_FEATURE_PROMPT.md`, the Java 17 Maven reactor passed 42 tests (33 backend, 9 frontend). This includes V3 migration/schema validation on H2, PDF ingestion and personalization, live SSE delivery over an embedded HTTP server, provider streaming fixtures, client cancellation, and loading the updated onboarding screen. See [feature details](ASTRA_FEATURES.md).
+Following the feature expansion, the Java 17 Maven reactor passed 42 tests (33 backend, 9 frontend). This includes V3 migration/schema validation on H2, PDF ingestion and personalization, live SSE delivery over an embedded HTTP server, provider streaming fixtures, client cancellation, and loading the updated onboarding screen. See [feature details](FEATURES.md).
 
 The packaged executable backend JAR also passed an HTTP smoke test against that MySQL instance: OpenAPI listed all required endpoints; registration, profile, courses, quests and progress succeeded; unauthenticated and non-admin requests returned 401 and 403 respectively.

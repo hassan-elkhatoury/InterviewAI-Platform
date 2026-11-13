@@ -90,8 +90,8 @@ Additional routes support onboarding and generation, lesson questions, preparati
 
 Passwords use BCrypt. Legacy SHA-256 hashes upgrade upon successful login. Access tokens expire after one hour by default; account suspension, password changes and role changes invalidate existing tokens. Rewards and completion are calculated by the backend, including duplicate/concurrent reward protection. Dates and quest periods use UTC.
 
-## Migration reference
+## Features and architecture
 
-The features in [ASTRA_FEATURE_PROMPT.md](ASTRA_FEATURE_PROMPT.md) are implemented. Onboarding's **Upload CV** accepts text PDFs up to 5 MB and displays extracted skills, seniority, experience and personalized tracks. The backend stores that user's resume context and retrieves it for subsequent course/question generation. Lesson and review screens display live AI critique with a cancellation button. See [feature behavior and SSE protocol](docs/ASTRA_FEATURES.md).
-
-See [migration status and rollout](docs/MIGRATION_STATUS.md) for the five completed steps, data mappings, compatibility details, and test instructions. The original [ASTRA migration guide](ASTRA_MIGRATION_GUIDE.md) remains unchanged. Older feature documentation and SQL snapshots are retained under `docs/legacy` for reference.
+- **Resume Ingestion & Personalization**: The onboarding screen accepts candidate CVs (PDF up to 5 MB), extracting skills, experience, and seniority in-memory via Apache PDFBox to tailor course questions.
+- **Real-Time Token Streaming**: Lesson and review screens stream AI critique character-by-character over HTTP Server-Sent Events (SSE) with interactive cancellation. See [feature behavior and SSE protocol](docs/FEATURES.md).
+- **Migration & Architecture**: See [architecture status and rollout](docs/MIGRATION_STATUS.md) for data mappings, compatibility details, and test instructions. Older documentation and legacy SQL snapshots are retained under `docs/legacy` for reference.

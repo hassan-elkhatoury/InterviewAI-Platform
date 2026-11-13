@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="600.0" prefWidth="900.0" styleClass="dark-root" stylesheets="@../css/main.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.interviewai.client.controller.CreateAccountController">
+    <BorderPane>
+        <top>
+            <HBox alignment="CENTER_RIGHT">
+                <padding>
+                    <Insets bottom="0" left="24" right="24" top="16" />
+                </padding>
+                <Pane HBox.hgrow="ALWAYS" />
+                <Button onAction="#onBack" styleClass="btn-outline-light" text="Login" />
+            </HBox>
+        </top>
+        <center>
+            <VBox alignment="CENTER" spacing="18">
+                <VBox alignment="CENTER" maxWidth="520" spacing="18" styleClass="auth-dark">
+                    <Label styleClass="title-dark" text="Create Account" />
+
+                    <!-- Username -->
+                    <VBox spacing="8">
+                        <TextField fx:id="usernameField" promptText="Username" styleClass="input-dark" />
+                    </VBox>
+
+                    <!-- Email -->
+                    <VBox spacing="8">
+                        <TextField fx:id="emailField" promptText="Email" styleClass="input-dark" />
+                    </VBox>
+
+                    <!-- Password -->
+                    <VBox spacing="8">
+                        <PasswordField fx:id="passwordField" promptText="Password" styleClass="input-dark" />
+                    </VBox>
+
+                    <!-- Primary button -->
+                    <Button fx:id="createAccountButton" defaultButton="true" maxWidth="Infinity" onAction="#onCreate" styleClass="btn-primary-blue" text="SIGN UP" />
+
+                    <!-- Divider -->
+                    <HBox alignment="CENTER" spacing="10">
+                        <Region prefHeight="1" style="-fx-background-color:#233041;" HBox.hgrow="ALWAYS" />
+                        <Label styleClass="divider-label" text="OU" />
+                        <Region prefHeight="1" style="-fx-background-color:#233041;" HBox.hgrow="ALWAYS" />
+                    </HBox>
+
+                    <!-- Social buttons -->
+                    <HBox alignment="CENTER" spacing="16">
+                        <Button styleClass="btn-social" text="GOOGLE" />
+                        <Button styleClass="btn-social" text="FACEBOOK" />
+                    </HBox>
+
+                    <!-- Footer text -->
+                    <Label styleClass="footer-text" text="By signing up for InterviewAI, you agree to our Terms of Service and Privacy Policy." wrapText="true" />
+                </VBox>
+            </VBox>
+        </center>
+    </BorderPane>
+</StackPane>

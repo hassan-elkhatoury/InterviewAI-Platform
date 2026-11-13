@@ -1,0 +1,10 @@
+target/
+*.iml
+.idea/
+*.log
+src/main/resources/config/config.properties
+**/config/config.properties
+.env
+.env.*
+!.env.example
+.vscode/*

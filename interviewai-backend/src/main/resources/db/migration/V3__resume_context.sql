@@ -1,0 +1,7 @@
+CREATE TABLE resume_context (
+  user_id INT PRIMARY KEY,
+  full_text MEDIUMTEXT NOT NULL,
+  profile_json TEXT NOT NULL,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

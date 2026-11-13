@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<!-- Progress Overview View -->
+
+<BorderPane styleClass="progress-root" stylesheets="@../css/progress.css,@../css/dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.ProgressController">
+    <!-- TOP: Header -->
+    <top>
+        <VBox styleClass="progress-header">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label fx:id="progressTitleLabel" styleClass="progress-title" text="Your Learning Progress" />
+                    <Label fx:id="progressSubtitleLabel" styleClass="progress-subtitle" text="Track your journey to mastery" />
+                </VBox>
+                <HBox alignment="CENTER_RIGHT" spacing="20">
+                    <VBox alignment="CENTER" spacing="2">
+                        <Label styleClass="stats-icon" text="⚡" />
+                        <Label styleClass="stats-number" text="2,450" fx:id="xpLabel" />
+                        <Label styleClass="stats-label" text="Total XP" />
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="2">
+                        <Label styleClass="stats-icon" text="🔥" />
+                        <Label fx:id="streakLabel" styleClass="stats-number" text="12" />
+                        <Label styleClass="stats-label" text="Day Streak" />
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="2">
+                        <Label styleClass="stats-icon" text="🎯" />
+                        <Label fx:id="accuracyLabel" styleClass="stats-number" text="87%" />
+                        <Label styleClass="stats-label" text="Accuracy" />
+                    </VBox>
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- CENTER: Scrollable Content -->
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="progress-scroll" vbarPolicy="AS_NEEDED">
+            <VBox spacing="24" styleClass="progress-wrapper">
+                <padding>
+                    <Insets bottom="24" left="24" right="24" top="24" />
+                </padding>
+                
+                <!-- Statistics Grid: XP Chart and Streak Chart -->
+                <GridPane hgap="16" styleClass="stats-grid" vgap="16">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="300" percentWidth="50" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="300" percentWidth="50" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="280" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    
+                    <!-- XP Progress Chart -->
+                    <VBox spacing="12" styleClass="chart-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label styleClass="chart-title" text="⚡ XP Progress (Last 7 Days)" />
+                        <LineChart animated="false" createSymbols="true" legendVisible="false" styleClass="xp-line-chart" fx:id="xpChart">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM" styleClass="chart-axis" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis side="LEFT" styleClass="chart-axis" />
+                            </yAxis>
+                        </LineChart>
+                    </VBox>
+                    
+                    <!-- Streak Activity Chart -->
+                    <VBox alignment="CENTER" spacing="12" styleClass="chart-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <ImageView fitHeight="126.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/NicePng_emoji-fire-png_421566%20(1).png" />
+                     </image>
+                  </ImageView>
+                        <Label fx:id="streakCount" prefHeight="94.0" prefWidth="502.0" style="-fx-alignment: center;" styleClass="streak-count" text="4" textAlignment="CENTER">
+                     <font>
+                        <Font size="39.0" />
+                     </font></Label>
+                  <Label prefHeight="37.0" prefWidth="262.0" style="-fx-alignment: center;" text="Days Streak" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="37.0" />
+                     </font>
+                  </Label>
+                  <HBox fx:id="streakDaysContainer" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(31, 34, 40, 0.95) 0%, rgba(26, 29, 35, 0.9) 1rgba(30, 41, 59, 0.3)00%); -fx-background-radius: 20px;" styleClass="goal-item">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="72.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center;" text="Mon" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle radius="18.0" strokeType="INSIDE" style="-fx-fill: linear-gradient(from 25.7576% 0.0% to 100.0% 100.0%, #27b159 0.0%, #006323 100.0%); -fx-stroke: linear-gradient(from 25.7576% 0.0% to 100.0% 100.0%, #27b159 0.0%, #053b0f 100.0%);" styleClass="streak-checked">
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0" startX="0.257575764800563">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.1518128663301468" green="0.6947368383407593" blue="0.3508850038051605" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.01801169663667679" green="0.23157894611358643" blue="0.060725145041942596" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                       <fill>
+                                          <LinearGradient endX="1.0" endY="1.0" startX="0.257575764800563">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.1518128663301468" green="0.6947368383407593" blue="0.3508850038051605" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color green="0.38947367668151855" blue="0.13631579279899597" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Circle>
+                                    <Label style="-fx-text-fill: #043b18;" text="✔" textFill="#043b18">
+                                       <font>
+                                          <Font name="Ebrima" size="19.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="72.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center;" text="Twe" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#151515" radius="18.0" strokeType="INSIDE" style="-fx-stroke: linear-gradient(from 25.7576% 0.0% to 100.0% 100.0%, #27b05994 0.0%, #053b0fdc 100.0%); -fx-fill: #151515;" styleClass="streak-unchecked">
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0" startX="0.257575764800563">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.1518000066280365" green="0.6899999976158142" blue="0.3491399884223938" opacity="0.5805471539497375" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.018400000408291817" green="0.23000000417232513" blue="0.06072000041604042" opacity="0.8632218837738037" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                    </Circle>
+                                    <Label textFill="WHITE" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="72.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center;" text="The" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#151515" radius="18.0" strokeType="INSIDE" style="-fx-stroke: linear-gradient(from 25.7576% 0.0% to 100.0% 100.0%, #27b05994 0.0%, #053b0fdc 100.0%);">
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0" startX="0.257575764800563">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.1518128663301468" green="0.6947368383407593" blue="0.3508850038051605" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.4414634146341463">
+                                                   <color>
+                                                      <Color red="0.15294118225574493" green="0.6901960968971252" blue="0.3490196168422699" opacity="0.5799999833106995" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color green="0.38947367668151855" blue="0.13631579279899597" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                    </Circle>
+                                    <Label textFill="WHITE" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="72.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center;" text="Wed" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#151515" radius="18.0" strokeType="INSIDE" style="-fx-stroke: linear-gradient(from 25.7576% 0.0% to 100.0% 100.0%, #27b05994 0.0%, #053b0fdc 100.0%);">
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0" startX="0.257575764800563">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.1518128663301468" green="0.6947368383407593" blue="0.3508850038051605" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color green="0.38947367668151855" blue="0.13631579279899597" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                    </Circle>
+                                    <Label textFill="WHITE" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="72.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center;" text="Fri" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#151515" radius="18.0" strokeType="INSIDE" style="-fx-stroke: linear-gradient(from 25.7576% 0.0% to 100.0% 100.0%, #27b05994 0.0%, #053b0fdc 100.0%);">
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0" startX="0.257575764800563">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.1518128663301468" green="0.6947368383407593" blue="0.3508850038051605" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color green="0.38947367668151855" blue="0.13631579279899597" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                    </Circle>
+                                    <Label textFill="WHITE" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="72.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center;" text="Sat" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#151515" radius="18.0" strokeType="INSIDE" style="-fx-stroke: linear-gradient(from 25.7576% 0.0% to 100.0% 100.0%, #27b05994 0.0%, #053b0fdc 100.0%);">
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0" startX="0.257575764800563">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.1518128663301468" green="0.6947368383407593" blue="0.3508850038051605" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color green="0.38947367668151855" blue="0.13631579279899597" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                    </Circle>
+                                    <Label textFill="WHITE" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="72.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center;" text="Sun" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#151515" radius="18.0" strokeType="INSIDE" style="-fx-stroke: linear-gradient(from 25.7576% 0.0% to 100.0% 100.0%, #27b05994 0.0%, #053b0fdc 100.0%);">
+                                       <stroke>
+                                          <LinearGradient endX="1.0" endY="1.0" startX="0.257575764800563">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.1518128663301468" green="0.6947368383407593" blue="0.3508850038051605" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color green="0.38947367668151855" blue="0.13631579279899597" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </stroke>
+                                    </Circle>
+                                    <Label textFill="WHITE" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                    </VBox>
+                </GridPane>
+
+                <!-- Overall Progress and Goals Grid -->
+                <GridPane hgap="16" styleClass="stats-grid" vgap="16">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="300" percentWidth="50" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="300" percentWidth="50" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    
+                    <!-- Overall Progress Card -->
+                    <VBox spacing="16" styleClass="progress-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label styleClass="card-title" text="📊 Overall Progress" />
+                        
+                        <VBox spacing="16">
+                            <VBox spacing="8">
+                                <HBox alignment="CENTER_LEFT" spacing="8">
+                                    <Label styleClass="stat-label" text="Questions Answered" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="questionsAnsweredLabel" styleClass="stat-value" text="245 / 320" />
+                                </HBox>
+                                <ProgressBar fx:id="questionsProgressBar" prefHeight="8" progress="0.77" styleClass="custom-progress-bar" />
+                            </VBox>
+                            
+                            <VBox spacing="8">
+                                <HBox alignment="CENTER_LEFT" spacing="8">
+                                    <Label styleClass="stat-label" text="Time Spent Learning" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="timeSpentLabel" styleClass="stat-value" text="24h 35m" />
+                                </HBox>
+                                <ProgressBar fx:id="timeProgressBar" prefHeight="8" progress="0.65" styleClass="custom-progress-bar" />
+                            </VBox>
+                            
+                            <VBox spacing="8">
+                                <HBox alignment="CENTER_LEFT" spacing="8">
+                                    <Label styleClass="stat-label" text="Courses Enrolled" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="coursesEnrolledLabel" styleClass="stat-value" text="3 Courses" />
+                                </HBox>
+                                <ProgressBar fx:id="coursesProgressBar" prefHeight="8" progress="0.45" styleClass="custom-progress-bar" />
+                            </VBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Goals Section -->
+                    <VBox spacing="16" styleClass="progress-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <Label styleClass="card-title" text="🎯 Current Goals" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Button fx:id="editGoalsBtn" styleClass="btn-edit-goals" text="Edit Goals" />
+                        </HBox>
+                        
+                        <VBox spacing="14" VBox.vgrow="ALWAYS">
+                            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="220" styleClass="goals-scroll-pane" vbarPolicy="AS_NEEDED">
+                                <content>
+                                    <VBox fx:id="goalsListContainer" spacing="14" styleClass="goals-list-container" />
+                                </content>
+                            </ScrollPane>
+                        </VBox>
+                    </VBox>
+                </GridPane>
+
+                <!-- Course Progress Section -->
+                <VBox fx:id="courseProgressContainer" spacing="16" styleClass="courses-section">
+                    <Label styleClass="section-title" text="📖 Course Progress" />
+                    
+                    <!-- Courses Grid -->
+                    <GridPane fx:id="courseProgressGrid" hgap="16" styleClass="courses-grid" vgap="16">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="300" percentWidth="50" />
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="300" percentWidth="50" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints vgrow="SOMETIMES" />
+                            <RowConstraints vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        
+                        <!-- Course 1: Java Fundamentals -->
+                        <VBox spacing="14" styleClass="course-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="course-header">
+                                <Label styleClass="course-icon" text="☕" />
+                                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                    <Label styleClass="course-name" text="Java Fundamentals" />
+                                    <Label styleClass="course-stats" text="8 / 12 chapters • 145 questions" />
+                                </VBox>
+                                <Label fx:id="course1ProgressLabel" styleClass="course-percentage" text="67%" />
+                            </HBox>
+                            <ProgressBar fx:id="course1ProgressBar" prefHeight="8" progress="0.67" styleClass="course-progress-bar" />
+                            
+                            <!-- Chapters List -->
+                            <VBox spacing="8" styleClass="chapters-list">
+                                <!-- Chapter 1 -->
+                                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="chapter-item">
+                                    <Label styleClass="chapter-status-icon completed" text="✓" />
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label styleClass="chapter-name" text="Introduction to Java" />
+                                        <Label styleClass="chapter-progress-text" text="15/15 questions • 100%" />
+                                    </VBox>
+                                    <ProgressBar prefHeight="4" progress="1.0" styleClass="chapter-mini-progress" />
+                                </HBox>
+                                
+                                <!-- Chapter 2 -->
+                                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="chapter-item">
+                                    <Label styleClass="chapter-status-icon completed" text="✓" />
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label styleClass="chapter-name" text="Variables and Types" />
+                                        <Label styleClass="chapter-progress-text" text="20/20 questions • 95%" />
+                                    </VBox>
+                                    <ProgressBar prefHeight="4" progress="1.0" styleClass="chapter-mini-progress" />
+                                </HBox>
+                                
+                                <!-- Chapter 3 -->
+                                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="chapter-item">
+                                    <Label styleClass="chapter-status-icon in-progress" text="▶" />
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label styleClass="chapter-name" text="Control Flow" />
+                                        <Label styleClass="chapter-progress-text" text="12/18 questions • 83%" />
+                                    </VBox>
+                                    <ProgressBar prefHeight="4" progress="0.67" styleClass="chapter-mini-progress" />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                        
+                        <!-- Course 2: Data Structures -->
+                        <VBox spacing="14" styleClass="course-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="course-header">
+                                <Label styleClass="course-icon" text="🗂️" />
+                                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                    <Label styleClass="course-name" text="Data Structures" />
+                                    <Label styleClass="course-stats" text="3 / 10 chapters • 65 questions" />
+                                </VBox>
+                                <Label fx:id="course2ProgressLabel" styleClass="course-percentage" text="30%" />
+                            </HBox>
+                            <ProgressBar fx:id="course2ProgressBar" prefHeight="8" progress="0.30" styleClass="course-progress-bar" />
+                            
+                            <!-- Chapters List -->
+                            <VBox spacing="8" styleClass="chapters-list">
+                                <!-- Chapter 1 -->
+                                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="chapter-item">
+                                    <Label styleClass="chapter-status-icon completed" text="✓" />
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label styleClass="chapter-name" text="Arrays and Lists" />
+                                        <Label styleClass="chapter-progress-text" text="25/25 questions • 88%" />
+                                    </VBox>
+                                    <ProgressBar prefHeight="4" progress="1.0" styleClass="chapter-mini-progress" />
+                                </HBox>
+                                
+                                <!-- Chapter 2 -->
+                                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="chapter-item">
+                                    <Label styleClass="chapter-status-icon in-progress" text="▶" />
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label styleClass="chapter-name" text="Stacks and Queues" />
+                                        <Label styleClass="chapter-progress-text" text="8/20 questions • 75%" />
+                                    </VBox>
+                                    <ProgressBar prefHeight="4" progress="0.40" styleClass="chapter-mini-progress" />
+                                </HBox>
+                                
+                                <!-- Chapter 3 -->
+                                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="chapter-item">
+                                    <Label styleClass="chapter-status-icon locked" text="🔒" />
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label styleClass="chapter-name locked" text="Trees and Graphs" />
+                                        <Label styleClass="chapter-progress-text" text="Not started" />
+                                    </VBox>
+                                    <ProgressBar prefHeight="4" progress="0.0" styleClass="chapter-mini-progress" />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                        
+                        <!-- Course 3: Web Development -->
+                        <VBox spacing="14" styleClass="course-card" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="course-header">
+                                <Label styleClass="course-icon" text="🌐" />
+                                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                    <Label styleClass="course-name" text="Web Development Basics" />
+                                    <Label styleClass="course-stats" text="1 / 8 chapters completed • 35 questions answered" />
+                                </VBox>
+                                <Label fx:id="course3ProgressLabel" styleClass="course-percentage" text="13%" />
+                            </HBox>
+                            <ProgressBar fx:id="course3ProgressBar" prefHeight="8" progress="0.13" styleClass="course-progress-bar" />
+                            
+                            <!-- Chapters List -->
+                            <VBox spacing="8" styleClass="chapters-list">
+                                <!-- Chapter 1 -->
+                                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="chapter-item">
+                                    <Label styleClass="chapter-status-icon in-progress" text="▶" />
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label styleClass="chapter-name" text="HTML and CSS Fundamentals" />
+                                        <Label styleClass="chapter-progress-text" text="15/30 questions • 80% accuracy" />
+                                    </VBox>
+                                    <ProgressBar prefHeight="4" progress="0.50" styleClass="chapter-mini-progress" />
+                                </HBox>
+                                
+                                <!-- Chapter 2 -->
+                                <HBox alignment="CENTER_LEFT" spacing="10" styleClass="chapter-item">
+                                    <Label styleClass="chapter-status-icon locked" text="🔒" />
+                                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                        <Label styleClass="chapter-name locked" text="JavaScript Basics" />
+                                        <Label styleClass="chapter-progress-text" text="Not started yet" />
+                                    </VBox>
+                                    <ProgressBar prefHeight="4" progress="0.0" styleClass="chapter-mini-progress" />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- BOTTOM: Action Bar -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="16" styleClass="progress-action-bar">
+            <padding>
+                <Insets bottom="16" left="24" right="24" top="16" />
+            </padding>
+            <Button fx:id="backToDashboardBtn" style="-fx-background-color: #10b981;" styleClass="btn-nav btn-secondary" text="← Back to Dashboard" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="motivationLabel" styleClass="motivation-text" text="Keep up the great work! 🚀" />
+        </HBox>
+    </bottom>
+</BorderPane>

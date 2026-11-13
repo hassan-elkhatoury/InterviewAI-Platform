@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.OnboardingWaitingController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0f172a;">
+         <center>
+            <VBox alignment="CENTER" spacing="25.0" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/images/Untitled (1080 x 1080 px)(1).gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                 
+                  <Label text="Building your interview preparation course..." style="-fx-text-fill: #e2e8f0; -fx-font-size: 18; -fx-font-weight: bold;" />
+                  
+                  <!-- Progress Bar Container -->
+                  <VBox spacing="15.0" maxWidth="600" prefWidth="600" alignment="CENTER">
+                     <children>
+                        <!-- Percentage Label Above Progress Bar -->
+                        <Label fx:id="progressPercentLabel" text="0%" 
+                               style="-fx-text-fill: #e2e8f0; -fx-font-size: 24; -fx-font-weight: bold; -fx-alignment: center;" alignment="CENTER" maxWidth="Infinity" />
+                        
+                        <!-- Horizontal Progress Bar -->
+                        <StackPane prefHeight="12.0">
+                           <children>
+                              <!-- Background Track -->
+                              <HBox prefHeight="12.0" style="-fx-background-color: #1e293b; -fx-background-radius: 6;" />
+                              <!-- Progress Fill (Left to Right) -->
+                              <HBox fx:id="progressFill" prefHeight="12.0" maxWidth="0" style="-fx-background-color: linear-gradient(to right, #3b82f6, #06b6d4); -fx-background-radius: 6;" alignment="CENTER_LEFT" StackPane.alignment="CENTER_LEFT" />
+                           </children>
+                        </StackPane>
+                     </children>
+                     <padding>
+                        <Insets left="50.0" right="50.0" />
+                     </padding>
+                  </VBox>
+                  
+                  <!-- Motivational Quote -->
+                  <VBox alignment="CENTER" spacing="8.0" maxWidth="650" style="-fx-background-color: rgba(30, 41, 59, 0.5); -fx-background-radius: 10; -fx-padding: 20;">
+                     <children>
+                        <Label fx:id="motivationalQuoteLabel" 
+                               text="&quot;Success is not final, failure is not fatal: it is the courage to continue that counts.&quot;" 
+                               style="-fx-text-fill: #cbd5e1; -fx-font-size: 15; -fx-font-style: italic; -fx-text-alignment: center;" 
+                               wrapText="true" textAlignment="CENTER" />
+                        <Label fx:id="quoteAuthorLabel" text="— Winston Churchill" 
+                               style="-fx-text-fill: #64748b; -fx-font-size: 12;" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  
+                  <!-- Error Container (Hidden by default) -->
+                  <VBox fx:id="errorContainer" alignment="CENTER" spacing="15.0" maxWidth="650" 
+                        style="-fx-background-color: rgba(220, 38, 38, 0.15); -fx-border-color: #dc2626; -fx-border-width: 1; -fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 25;"
+                        visible="false" managed="false">
+                     <children>
+                        <Label text="⚠️ Course Generation Failed" 
+                               style="-fx-text-fill: #fca5a5; -fx-font-size: 18; -fx-font-weight: bold;" />
+                        <Label fx:id="errorMessageLabel" 
+                               text="An error occurred during course generation." 
+                               style="-fx-text-fill: #fecaca; -fx-font-size: 14; -fx-text-alignment: center;" 
+                               wrapText="true" textAlignment="CENTER" />
+                        <javafx.scene.control.Button fx:id="retryButton" 
+                               text="← Back to Onboarding" 
+                               style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 12 30; -fx-background-radius: 8; -fx-cursor: hand;" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

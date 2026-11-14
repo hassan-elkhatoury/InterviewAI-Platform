@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="600.0" prefWidth="900.0" styleClass="dark-root" stylesheets="@../css/main.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.interviewai.client.controller.CreateAccountController">
+<StackPane prefHeight="600.0" prefWidth="900.0" styleClass="dark-root" stylesheets="@../css/main.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20" fx:controller="com.interviewai.client.controller.CreateAccountController">
     <BorderPane>
         <top>
             <HBox alignment="CENTER_RIGHT">

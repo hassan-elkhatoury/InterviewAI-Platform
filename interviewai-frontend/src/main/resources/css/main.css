@@ -80,20 +80,20 @@
 
 /* Primary button (Login, Create Account) */
 .button-primary {
-    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);
     -fx-text-fill: white;
     -fx-min-width: 140px;
 }
 
 .button-primary:hover {
-    -fx-background-color: linear-gradient(135deg, #5568d3 0%, #6a4190 100%);
+    -fx-background-color: linear-gradient(to bottom right, #5568d3 0%, #6a4190 100%);
     -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.3), 8, 0, 0, 4);
     -fx-scale-y: 1.02;
     -fx-scale-x: 1.02;
 }
 
 .button-primary:pressed {
-    -fx-background-color: linear-gradient(135deg, #4c5bc4 0%, #5e3a82 100%);
+    -fx-background-color: linear-gradient(to bottom right, #4c5bc4 0%, #5e3a82 100%);
     -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.2), 4, 0, 0, 2);
     -fx-scale-y: 0.98;
     -fx-scale-x: 0.98;
@@ -152,12 +152,12 @@
 
 /* Default button indicator */
 .button:default {
-    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);
     -fx-text-fill: white;
 }
 
 .button:default:hover {
-    -fx-background-color: linear-gradient(135deg, #5568d3 0%, #6a4190 100%);
+    -fx-background-color: linear-gradient(to bottom right, #5568d3 0%, #6a4190 100%);
 }
 
 /* Responsive adjustments */
@@ -506,7 +506,7 @@
 
 /* ======== Profile Page Styles ======== */
 .section-header {
-    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);
 }
 
 .title-large {
@@ -523,7 +523,7 @@
 }
 
 .profile-avatar {
-    -fx-fill: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -fx-fill: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);
 }
 
 .section-title {

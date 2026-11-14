@@ -15,7 +15,7 @@
 
 <!-- Modern Futuristic Question View (Sticky Navigation) -->
 
-<StackPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.reviewQuestionsController">
+<StackPane xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.reviewQuestionsController">
     <!-- Main Content -->
     <BorderPane styleClass="lesson-root" stylesheets="@../css/lesson.css,@../css/dashboard.css">
     <!-- TOP: Header -->

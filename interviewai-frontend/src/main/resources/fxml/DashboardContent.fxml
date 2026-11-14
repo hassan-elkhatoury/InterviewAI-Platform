@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <!-- Dashboard Content (without sidebar) -->
-<ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="dashboard-scroll" vbarPolicy="AS_NEEDED" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.DashboardController">
+<ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="dashboard-scroll" vbarPolicy="AS_NEEDED" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.DashboardController">
     <VBox styleClass="content-wrapper">
 
         <!-- Enhanced Header Section -->

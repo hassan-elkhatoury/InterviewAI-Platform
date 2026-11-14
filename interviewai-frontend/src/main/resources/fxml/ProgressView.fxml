@@ -26,7 +26,7 @@
 
 <!-- Progress Overview View -->
 
-<BorderPane styleClass="progress-root" stylesheets="@../css/progress.css,@../css/dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.ProgressController">
+<BorderPane styleClass="progress-root" stylesheets="@../css/progress.css,@../css/dashboard.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.ProgressController">
     <!-- TOP: Header -->
     <top>
         <VBox styleClass="progress-header">

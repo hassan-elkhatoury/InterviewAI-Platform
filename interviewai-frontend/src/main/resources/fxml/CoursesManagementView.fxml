@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane styleClass="courses-management-root" stylesheets="@../css/courses-management.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.CoursesManagementController">
+<BorderPane styleClass="courses-management-root" stylesheets="@../css/courses-management.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.CoursesManagementController">
 
     <!-- LEFT: Shared Admin Sidebar -->
     <left>

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<VBox spacing="0" styleClass="main-content" stylesheets="@../css/dashboard.css, @../css/admin-profile.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.ProfileController">
+<VBox spacing="0" styleClass="main-content" stylesheets="@../css/dashboard.css, @../css/admin-profile.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.ProfileController">
 
     <!-- ===== TOP HEADER ===== -->
     <HBox alignment="CENTER_LEFT" spacing="20" styleClass="top-header">

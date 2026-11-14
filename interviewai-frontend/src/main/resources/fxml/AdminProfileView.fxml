@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane styleClass="admin-profile-root" stylesheets="@../css/admin-profile.css, @../css/admin-sidebar.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.AdminProfileController">
+<BorderPane styleClass="admin-profile-root" stylesheets="@../css/admin-profile.css, @../css/admin-sidebar.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.AdminProfileController">
 
     <!-- LEFT: Admin Sidebar -->
     <left>

@@ -11,7 +11,7 @@
 
 <!-- Review Incorrect Questions View -->
 
-<BorderPane styleClass="review-root" stylesheets="@../css/review.css,@../css/dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.ReviewController">
+<BorderPane styleClass="review-root" stylesheets="@../css/review.css,@../css/dashboard.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.ReviewController">
     <!-- TOP: Header -->
     <top>
         <VBox styleClass="review-header">

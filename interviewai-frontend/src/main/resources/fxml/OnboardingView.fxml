@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="600.0" prefWidth="900.0" styleClass="dark-root" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.OnboardingController">
+<StackPane prefHeight="600.0" prefWidth="900.0" styleClass="dark-root" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.OnboardingController">
     <BorderPane>
         <top>
             <!-- Progress dots -->

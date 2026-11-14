@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.StackPane?>
 
 <!-- Main Layout with Persistent Sidebar -->
-<BorderPane stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.MainLayoutController">
+<BorderPane stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.MainLayoutController">
     
     <!-- LEFT: Persistent Sidebar -->
     <left>

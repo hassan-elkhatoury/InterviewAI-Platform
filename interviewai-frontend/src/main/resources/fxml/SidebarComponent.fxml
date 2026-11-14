@@ -9,7 +9,7 @@
 
 <!-- Reusable Sidebar Component -->
 
-<VBox styleClass="sidebar" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.SidebarController">
+<VBox styleClass="sidebar" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.interviewai.client.controller.SidebarController">
     <!-- Logo & Branding -->
     <VBox styleClass="sidebar-header">
         <HBox alignment="CENTER_LEFT" spacing="12">

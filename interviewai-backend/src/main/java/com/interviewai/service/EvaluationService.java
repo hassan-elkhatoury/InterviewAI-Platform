@@ -11,7 +11,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 @Service
 public class EvaluationService {
   private final CurriculumService curriculum;
-  private final OpenRouterAIService ai;
+  private final AIService ai;
   private final UserRepository users;
   private final QuestionRepository questions;
   private final LessonRepository lessons;
@@ -23,7 +23,7 @@ public class EvaluationService {
 
   public EvaluationService(
       CurriculumService curriculum,
-      OpenRouterAIService ai,
+      AIService ai,
       UserRepository users,
       QuestionRepository questions,
       LessonRepository lessons,
@@ -46,12 +46,12 @@ public class EvaluationService {
 
   public Views.Evaluation evaluate(int userId, Requests.Evaluate request) {
     Question question = curriculum.ownedQuestion(userId, request.questionId());
-    OpenRouterAIService.Grade grade;
+    AIService.Grade grade;
     if ("MULTIPLE_CHOICE".equals(question.getQuestionType())) {
       boolean correct =
           question.getCorrectAnswer().trim().equalsIgnoreCase(request.userAnswer().trim());
       grade =
-          new OpenRouterAIService.Grade(
+          new AIService.Grade(
               correct ? 100 : 0,
               correct ? "You selected the correct answer." : "You attempted the question.",
               correct ? "Keep practicing." : "Review the explanation and try again.",
@@ -65,12 +65,12 @@ public class EvaluationService {
   }
 
   public Views.Evaluation saveStreamed(
-      int userId, Requests.Evaluate request, OpenRouterAIService.Grade grade) {
+      int userId, Requests.Evaluate request, AIService.Grade grade) {
     return transactions.execute(tx -> persist(userId, request, grade));
   }
 
   private Views.Evaluation persist(
-      int userId, Requests.Evaluate request, OpenRouterAIService.Grade grade) {
+      int userId, Requests.Evaluate request, AIService.Grade grade) {
     User user = users.lockById(userId).filter(User::isActive).orElseThrow(ApiException::notFound);
     Question question = curriculum.ownedQuestion(user.getId(), request.questionId());
     Lesson lesson = curriculum.ownedLesson(userId, question.getChapterId());

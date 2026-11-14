@@ -18,11 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 public class ResumeService {
   public static final int MAX_BYTES = 5 * 1024 * 1024;
   private final ResumeContextRepository resumes;
-  private final OpenRouterAIService ai;
+  private final AIService ai;
   private final ObjectMapper mapper;
 
   public ResumeService(
-      ResumeContextRepository resumes, OpenRouterAIService ai, ObjectMapper mapper) {
+      ResumeContextRepository resumes, AIService ai, ObjectMapper mapper) {
     this.resumes = resumes;
     this.ai = ai;
     this.mapper = mapper;

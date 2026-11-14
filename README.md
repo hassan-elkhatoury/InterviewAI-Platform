@@ -34,8 +34,8 @@ $rng = [Security.Cryptography.RandomNumberGenerator]::Create()
 $rng.GetBytes($bytes)
 $rng.Dispose()
 $env:JWT_SECRET = [Convert]::ToBase64String($bytes)
-$env:AI_API_KEY = '<your OpenRouter key>'
-$env:AI_MODEL = 'openai/gpt-4o-mini'
+$env:AI_API_KEY = '<your AI API key>'
+$env:AI_MODEL = 'gemini-3.8-flash'
 mvn -pl interviewai-backend spring-boot:run
 ```
 

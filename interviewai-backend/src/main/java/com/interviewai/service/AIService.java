@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.*;
 
 @Service
-public class OpenRouterAIService {
+public class AIService {
   public record Grade(int score, String strengths, String improvements, String explanation) {}
 
   private final RestClient client;
@@ -25,7 +25,7 @@ public class OpenRouterAIService {
   private final java.net.URI endpoint;
   private final HttpClient streamingClient;
 
-  public OpenRouterAIService(
+  public AIService(
       RestClient.Builder builder,
       ObjectMapper mapper,
       Validator validator,

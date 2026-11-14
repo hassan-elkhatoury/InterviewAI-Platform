@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import com.fasterxml.jackson.databind.*;
 import com.interviewai.exception.ApiException;
-import com.interviewai.service.OpenRouterAIService;
+import com.interviewai.service.AIService;
 import com.sun.net.httpserver.HttpServer;
 import jakarta.validation.*;
 import java.net.InetSocketAddress;
@@ -16,9 +16,9 @@ import org.junit.jupiter.api.*;
 import org.springframework.http.*;
 import org.springframework.web.client.RestClient;
 
-class OpenRouterAIServiceTest {
+class AIServiceTest {
   HttpServer server;
-  OpenRouterAIService ai;
+  AIService ai;
   ValidatorFactory validation;
   ObjectMapper mapper = new ObjectMapper();
   volatile int responseStatus = 200;
@@ -46,8 +46,8 @@ class OpenRouterAIServiceTest {
     ai = service("test-key");
   }
 
-  OpenRouterAIService service(String key) {
-    return new OpenRouterAIService(
+  AIService service(String key) {
+    return new AIService(
         RestClient.builder(),
         mapper,
         validation.getValidator(),

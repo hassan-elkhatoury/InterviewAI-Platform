@@ -17,7 +17,7 @@ import org.springframework.web.client.RestClient;
 
 class ProviderStreamingTest {
   HttpServer server;
-  OpenRouterAIService ai;
+  AIService ai;
   ObjectMapper mapper = new ObjectMapper();
   volatile String response;
   volatile String received;
@@ -49,7 +49,7 @@ class ProviderStreamingTest {
     server.start();
     try (var validation = Validation.buildDefaultValidatorFactory()) {
       ai =
-          new OpenRouterAIService(
+          new AIService(
               RestClient.builder(),
               mapper,
               validation.getValidator(),

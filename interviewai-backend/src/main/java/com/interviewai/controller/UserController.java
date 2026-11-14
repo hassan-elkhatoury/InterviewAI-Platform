@@ -13,7 +13,7 @@ public class UserController {
   private final ProfileService profiles;
   private final ProgressService progress;
   private final AchievementService achievements;
-  private final OpenRouterAIService ai;
+  private final AIService ai;
   private final CurriculumService curriculum;
   private final ResumeService resumes;
 
@@ -21,7 +21,7 @@ public class UserController {
       ProfileService profiles,
       ProgressService progress,
       AchievementService achievements,
-      OpenRouterAIService ai,
+      AIService ai,
       CurriculumService curriculum,
       ResumeService resumes) {
     this.profiles = profiles;

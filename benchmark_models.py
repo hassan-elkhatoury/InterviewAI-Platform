@@ -3,9 +3,9 @@ import requests
 import time
 import json
 
-# OpenRouter API configuration from environment
-API_KEY = os.environ.get("OPENROUTER_API_KEY", "your_openrouter_api_key_here")
-API_URL = "https://openrouter.ai/api/v1/chat/completions"
+# AI API configuration from environment
+API_KEY = os.environ.get("AI_API_KEY", "")
+API_URL = os.environ.get("AI_API_URL", "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions")
 
 # Free models to test (as of Dec 2024)
 FREE_MODELS = [
@@ -106,7 +106,7 @@ def test_model(model_name):
 
 def main():
     print("=" * 80)
-    print("🚀 OpenRouter Model Benchmark - Free Models")
+    print("🚀 AI Model Benchmark")
     print("=" * 80)
     print(f"\nTesting {len(FREE_MODELS)} free models...")
     print("This will take a few minutes...\n")
@@ -171,8 +171,8 @@ def main():
         print(f"\n🏆 Fastest Model: {fastest['model']}")
         print(f"⏱️  Average Response Time: {fastest['duration']:.2f} seconds")
         print(f"📊 Test Score: {fastest.get('score', 'N/A')}/100")
-        print(f"\n✨ Update your config.properties with:")
-        print(f"   openrouter.model={fastest['model']}")
+        print("✨ Update your .env or configuration with:")
+        print(f"   AI_MODEL={fastest['model']}")
     
     print("\n" + "=" * 80)
 

@@ -40,7 +40,7 @@ class FeatureIntegrationTest {
   @Autowired FeedbackRepository feedback;
   @Autowired ProgressRepository progress;
   @Autowired ResumeContextRepository resumes;
-  @MockitoBean OpenRouterAIService ai;
+  @MockitoBean AIService ai;
   String token;
   int uid;
   Question question;
@@ -193,7 +193,7 @@ class FeatureIntegrationTest {
               Consumer<String> tokens = invocation.getArgument(3);
               tokens.accept("You explained ");
               tokens.accept("the concept.");
-              return new OpenRouterAIService.Grade(
+              return new AIService.Grade(
                   85, "Good", "Add detail", "You explained the concept.");
             })
         .when(ai)
@@ -273,7 +273,7 @@ class FeatureIntegrationTest {
               tokens.accept("Live critique");
               if (!finish.await(10, java.util.concurrent.TimeUnit.SECONDS))
                 throw new IllegalStateException("Client did not receive token");
-              return new OpenRouterAIService.Grade(80, "Good", "Add detail", "Live critique");
+              return new AIService.Grade(80, "Good", "Add detail", "Live critique");
             })
         .when(ai)
         .streamGrade(anyString(), anyString(), anyString(), any(), any());

@@ -14,14 +14,14 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @Service
 public class StreamingEvaluationService {
   private final CurriculumService curriculum;
-  private final OpenRouterAIService ai;
+  private final AIService ai;
   private final EvaluationService evaluations;
   private final ExecutorService workers =
       new ThreadPoolExecutor(8, 8, 0, TimeUnit.SECONDS, new ArrayBlockingQueue<>(32));
   private final ScheduledExecutorService timers = Executors.newScheduledThreadPool(2);
 
   public StreamingEvaluationService(
-      CurriculumService curriculum, OpenRouterAIService ai, EvaluationService evaluations) {
+      CurriculumService curriculum, AIService ai, EvaluationService evaluations) {
     this.curriculum = curriculum;
     this.ai = ai;
     this.evaluations = evaluations;

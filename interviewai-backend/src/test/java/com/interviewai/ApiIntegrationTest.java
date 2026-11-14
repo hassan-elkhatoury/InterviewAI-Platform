@@ -43,7 +43,7 @@ class ApiIntegrationTest {
   @Autowired QuestRepository quests;
   @Autowired PasswordEncoder passwords;
   @Autowired EvaluationService evaluations;
-  @MockitoBean OpenRouterAIService ai;
+  @MockitoBean AIService ai;
   String username;
   String token;
   User owner;
@@ -254,7 +254,7 @@ class ApiIntegrationTest {
     assertThat(feedback.findByUserIdOrderByCreatedAtDesc(owner.getId())).isEmpty();
     assertThat(questions.findById(shortAnswer.getId()).orElseThrow().getStatus())
         .isEqualTo("NOT_STARTED");
-    doReturn(new OpenRouterAIService.Grade(85, "Good reasoning", "Add an example", "Explanation"))
+    doReturn(new AIService.Grade(85, "Good reasoning", "Add an example", "Explanation"))
         .when(ai)
         .validateAnswer(anyString(), anyString(), anyString());
     evaluate(shortAnswer.getId(), "My answer")

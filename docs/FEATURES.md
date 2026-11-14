@@ -1,6 +1,6 @@
 # Streaming critique and resume personalization
 
-Both features run on Java 17. Configure the backend's `AI_API_KEY`, `AI_MODEL`, and optionally `AI_API_URL` as described in the root README. The URL must support OpenRouter-compatible chat completions and SSE deltas. Provider credentials stay on the backend.
+Both features run on Java 17. Configure the backend's `AI_API_KEY`, `AI_MODEL`, and optionally `AI_API_URL` as described in the root README. The URL must support OpenAI-compatible chat completions and SSE deltas (such as Google Gemini). Provider credentials stay on the backend.
 
 ## Desktop flow
 
